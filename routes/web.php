@@ -15,18 +15,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/order', function(){
-    return view('products');
+Route::get('/hello/array', function () {
+    // Closure ฟังก์ชันไม่มีชื่อ 
+    return [
+        [
+        'message' => 'hello laravel',
+        'aa' => ['message' => 'hello laravel',
+        'aa' => 'aaaa']
+        ]
+        ,[
+            'message' => 'hello laravel',
+        'aa' => ['message' => 'hello laravel',
+        'aa' => 'aaaa']
+        ]
+    ];
 });
 
-Route::get('/payments',function(){
-    return view('payments');
+Route::get('/about-us', function () {
+    // Closure ฟังก์ชันไม่มีชื่อ
+    return view('about');
 });
 
-Route::get('/products', function(){
-    return view('products');
-});
+Route::get('/master', function () {
+    // Closure ฟังก์ชันไม่มีชื่อ
+    return view('layouts.master');
+}); 
 
-Route::get('/merchant', function(){
-    return view('merchant');
-});
+Route::get('/posts', 'PostsController@index');
+Route::get('/posts/{id}', 'PostsController@show')
+->where('id', '[0-9]+')
+->name('posts.show');
