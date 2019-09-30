@@ -2,6 +2,7 @@
 @section('content')   
 
 <form name="form1" method="post" action="check_login.php">
+
   ลงชื่อเข้าใช้<br>
   <table border="1" style="width: 300px">
     <tbody>
@@ -20,6 +21,8 @@
   </table>
   <br>
   <input type="submit" name="Submit" value="Login">
+
 </form>
+
 
 @endsection
