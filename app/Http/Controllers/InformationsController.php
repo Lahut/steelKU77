@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class InformationController extends Controller
+class InformationsController extends Controller
 {
     public function go() {
-        return view('information.information');
+        return view('informations.informations');
     }
 }
