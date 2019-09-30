@@ -48,5 +48,6 @@ Route::get('/register', 'RegisterController@go');
 Route::get('/posts/{id}', 'PostsController@show');
 Route::get('/product', 'ProductController@go');
 Route::get('/information', 'InformationController@go');
+Route::get('/contact', 'ContactController@go');
 //->where('id', '[0-9]+');
 //->name('posts.show');

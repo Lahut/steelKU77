@@ -33,7 +33,7 @@
         <a class="nav-link" href="{{ action('ProductController@go') }}">สินค้า</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ติดต่อ</a>
+        <a class="nav-link" href="{{ action('ContactController@go') }}">ติดต่อ</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
