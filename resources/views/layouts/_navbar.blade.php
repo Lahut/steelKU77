@@ -4,7 +4,7 @@
         <h1 class="text-muted" href="#">ราหูดเหล็กเส้น</h1>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Large</a>
+        <a class="blog-header-logo text-dark" href="#"></a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="text-muted" href="#">
