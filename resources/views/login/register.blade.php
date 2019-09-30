@@ -2,7 +2,7 @@
 @section('content')   
 
 <form name="form1" method="post" action="check_login.php">
-  ลงชื่อเข้าใช้<br>
+  สมัครสมาชิก<br>
   <table border="1" style="width: 300px">
     <tbody>
       <tr>

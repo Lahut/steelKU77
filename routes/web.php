@@ -42,7 +42,8 @@ Route::get('/master', function () {
 }); 
 
 Route::get('/posts', 'PostsController@index');
-Route::get('/posts', 'LoginController@go');
+Route::get('/login', 'LoginController@go');
+Route::get('/register', 'RegisterController@go');
 Route::get('/posts/{id}', 'PostsController@show')
 ->where('id', '[0-9]+')
 ->name('posts.show');
