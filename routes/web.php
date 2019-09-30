@@ -42,9 +42,9 @@ Route::get('/master', function () {
 }); 
 
 Route::get('/posts', 'PostsController@index');
-Route::get('/home', 'IndexController@go');
 Route::get('/login', 'LoginController@go');
 Route::get('/register', 'RegisterController@go');
-Route::get('/posts/{id}', 'PostsController@show')
-->where('id', '[0-9]+')
-->name('posts.show');
+Route::get('/posts/{id}', 'PostsController@show');
+Route::get('/product', 'ProductController@go');
+//->where('id', '[0-9]+');
+//->name('posts.show');
