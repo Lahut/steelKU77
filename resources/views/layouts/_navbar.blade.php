@@ -27,7 +27,7 @@
         <a class="nav-link" href="#">หน้าแรก <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ข้อมูลบริษัท</a>
+        <a class="nav-link" href="{{ action('InformationController@go') }}">ข้อมูลบริษัท</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ action('ProductController@go') }}">สินค้า</a>
