@@ -30,14 +30,11 @@
         <a class="nav-link" href="{{ action('InformationController@go') }}">ข้อมูลบริษัท</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ action('ProductController@go') }}">สินค้า</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="{{ action('ContactController@go') }}">ติดต่อ</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        สินค้า
+        รายการสินค้า
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ action('ProductController@go') }}">เหล็กเส้น</a>
