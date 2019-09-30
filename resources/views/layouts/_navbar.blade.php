@@ -41,6 +41,7 @@
           <a class="dropdown-item" href="#">เหล็กไหล</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">เหล็กเก่า</a>
+          <a class="dropdown-item" href="{{ action('Product2Controller@go') }}">เหล็กลวด</a>
         </div>
       </li>
      
