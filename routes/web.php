@@ -43,6 +43,7 @@ Route::get('/master', function () {
 
 Route::get('/posts', 'PostsController@index');
 Route::get('/login', 'LoginController@go');
+Route::get('/home', 'IndexController@go');
 Route::get('/register', 'RegisterController@go');
 Route::get('/posts/{id}', 'PostsController@show');
 Route::get('/product', 'ProductController@go');
