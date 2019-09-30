@@ -5,6 +5,7 @@
     <img src="imghome/mp.jpg" class="rounded float-left" alt="..." height="40%" width="40%">
 <img src="imghome/sp.jpg" class="rounded float-right" alt="..." height="40%" width="40%">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h3>สินค้าแนะนำ</h3>
 <div class="card mb-3" style="max-width: 100%;">
   <div class="row no-gutters">
     <div class="col-md-4">
