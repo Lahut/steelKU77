@@ -41,11 +41,10 @@ Route::get('/master', function () {
     return view('layouts.master');
 }); 
 
-Route::get('/posts', 'PostsController@index');
+Route::resource('/posts', 'PostController');
 Route::get('/login', 'LoginController@go');
 Route::get('/home', 'IndexController@go');
 Route::get('/register', 'RegisterController@go');
-Route::get('/posts/{id}', 'PostsController@show');
 Route::get('/product', 'ProductController@go');
 Route::get('/product2', 'Product2Controller@go');
 Route::get('/informations', 'InformationsController@go');
