@@ -30,19 +30,22 @@
         <a class="nav-link" href="{{ action('InformationsController@go') }}">ข้อมูลบริษัท</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ action('ContactController@go') }}">ติดต่อ</a>
+        <a class="nav-link" href="{{ action('BranchController@index') }}">ติดต่อ</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         รายการสินค้า
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{ action('ProductController@go') }}">เหล็กเส้น</a>
+          <a class="dropdown-item" href="">เหล็กเส้น</a>
           <a class="dropdown-item" href="#">เหล็กไหล</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">เหล็กเก่า</a>
-          <a class="dropdown-item" href="{{ action('Product2Controller@go') }}">เหล็กลวด</a>
+          <a class="dropdown-item" href="">เหล็กลวด</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ action('ProductController@index') }}">สินค้าทั้งหมด</a>
       </li>
      
     </ul>

@@ -42,11 +42,11 @@ Route::get('/master', function () {
 }); 
 
 Route::resource('/posts', 'PostController');
+Route::resource('/products', 'ProductController');
+Route::resource('/branches', 'BranchController');
 Route::get('/login', 'LoginController@go');
 Route::get('/home', 'IndexController@go');
 Route::get('/register', 'RegisterController@go');
-Route::get('/product', 'ProductController@go');
-Route::get('/product2', 'Product2Controller@go');
 Route::get('/informations', 'InformationsController@go');
 Route::get('/contact', 'ContactController@go');
 //->where('id', '[0-9]+');

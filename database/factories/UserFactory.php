@@ -1,7 +1,9 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -21,7 +23,11 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => Hash::make($request->newPassword), // password
+        'password' => Hash::make('password', [
+            'memory' => 1024,
+            'time' => 2,
+            'threads' => 2,
+        ]), // password
         'remember_token' => Str::random(10),
     ];
 });

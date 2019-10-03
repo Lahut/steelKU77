@@ -3,7 +3,7 @@
 <h1></h1>
 <p>{{ date('j/M/Y H:i:s') }}</p> 
 
-@foreach ($posts as $post) {
+@foreach ($posts as $post) 
     <div class="card">
     <div class="card-body">
     {{ $post->id }}
@@ -13,6 +13,6 @@
 
     </div>
     </div>
-}
+
 @endforeach
 @endsection
