@@ -15,22 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello/array', function () {
-    // Closure ฟังก์ชันไม่มีชื่อ 
-    return [
-        [
-        'message' => 'hello laravel',
-        'aa' => ['message' => 'hello laravel',
-        'aa' => 'aaaa']
-        ]
-        ,[
-            'message' => 'hello laravel',
-        'aa' => ['message' => 'hello laravel',
-        'aa' => 'aaaa']
-        ]
-    ];
-});
-
 Route::get('/about-us', function () {
     // Closure ฟังก์ชันไม่มีชื่อ
     return view('about');
