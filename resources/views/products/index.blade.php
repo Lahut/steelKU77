@@ -18,8 +18,8 @@
                     <p align='right'>ขายไปแล้ว {{$product->order_count}} ชิ้น</p>
                     <a href="{{ route('products.show', ['product' => $product->id]) }}" class="float-right btn btn-primary">สั่งซื้อ</a>
                     <br><br>
-                    <a href="{{ route('products.show', ['product' => $product->id]) }}" class="btn btn-primary">แก้ไข</a>
-                    <a href="{{ action('ProductController@destroy', ['id' => $product->id]) }}" class="float-right btn btn-primary">ลบ</a>
+                    <a href="{{ route('products.edit', ['product' => $product->id]) }}" class="btn btn-primary">แก้ไข</a>
+                    <a href="{{ route('products.destroy', ['product' => $product->id]) }}" class="float-right btn btn-primary">ลบ</a>
                 </div>
             </div>
             <br>

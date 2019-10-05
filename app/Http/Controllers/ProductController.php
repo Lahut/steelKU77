@@ -51,6 +51,11 @@ class ProductController extends Controller
         return view('products.show', ['product' => $product]);
     }
 
+    public function showEdit(Product $product)
+    {
+        return view('products.edit', ['product' => $product]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -60,6 +65,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
