@@ -1,12 +1,16 @@
 @extends('layouts.master')
 @section('content')
-    <img src="imghome/banner1.jpg" class="img-fluid animated fadeInDown" alt="Responsive image">
+    <div data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="500"><img src="imghome/banner1.jpg" class="fade-up img-fluid animated fadeInDown" alt="Responsive image"></div>
     <br><br>
-    <img src="imghome/mp.jpg" class="rounded float-left animated fadeInDown" alt="..." height="40%" width="40%">
-<img src="imghome/sp.jpg" class="rounded float-right animated fadeInDown" alt="..." height="40%" width="40%">
+    <img src="imghome/mp.jpg" class="rounded float-left animated fadeInLeft" alt="..." height="40%" width="40%">
+<img src="imghome/sp.jpg" class="rounded float-right animated fadeInRight" alt="..." height="40%" width="40%">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <h3>สินค้าแนะนำ</h3>
-<div class="card mb-3" style="max-width: 100%;">
+<div class="card mb-3 img" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="500"style="max-width: 100%;">
   <div class="row no-gutters">
     <div class="col-md-4">
       <img src="imghome/different-metal-products-stainless-steel-profiles-PD9SKW3-1024x768.jpg" class="card-img" alt="...">
@@ -21,7 +25,9 @@
     </div>
   </div>
 </div>
-<div class="card mb-3" style="max-width: 100%;">
+<div class="card mb-3 img" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="500" style="max-width: 100%;">
   <div class="row no-gutters">
     <div class="col-md-4">
       <img src="imghome/different-metal-products-stainless-steel-profiles-PD9SKW3-1024x768.jpg" class="card-img" alt="...">

@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href='{{ url("css/bootstrap.css") }}'>
     <link rel="stylesheet" href='{{ url("css/mycss.css") }}'>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="{{ url('js/myjs.js') }}"></script>
     <title>{{ env('APP_NAME') }}</title>
 </head>
-<body class="container">
-    
+<body class="container">    
 @include('layouts._navbar')
 <div class="container bg-light">
   <br>
@@ -21,4 +21,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="{{ url('js/bootstrap.js') }}"></script>
 </body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+   AOS.init();
+</script>
 </html>

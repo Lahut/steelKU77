@@ -3,7 +3,9 @@
 <h1></h1>
 
 @foreach ($branches as $branch) 
-    <div class="card">
+    <div class="card fade-up" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="500">
     <div class="card-body">
     <p>สาขาที่ {{ $branch->id }}</p>
     <h5 class="card-title">{{ $branch->title }}</h5>

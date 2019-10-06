@@ -7,7 +7,9 @@
     <div class="row">
         @foreach($chunk as $product)
         <div class="col">
-            <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 100%">
+            <div data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="500" class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 100%">
                 <img src="/img_product/{{$product->image}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <?php $title = substr($product->title, 0, 20)  ?>
