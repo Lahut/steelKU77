@@ -15,8 +15,19 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::get();
+        $productsDeleted = Product::onlyTrashed()->get();
        // dd($posts); //dump and die
-        return view('products.index', ['products' => $products]);
+        return view('products.index', ['products' => $products,
+        'productsDeleted' => $productsDeleted]);
+    }
+
+    public function deleted()
+    {
+        $products = Product::get();
+        $productsDeleted = Product::onlyTrashed()->get();
+       // dd($posts); //dump and die
+        return view('products.deleted', ['products' => $products,
+        'productsDeleted' => $productsDeleted]);
     }
 
     /**
@@ -86,9 +97,19 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $blog = Product::findOrFail($id);
-        $blog->delete();       
+    public function destroy(Product $product)
+    {        
+        if ($product->deleted_at == null) {
+            $product->delete();
+        } else {
+            $product->restore();
+        }
+        return $this->index();
+    }
+
+    public function restore(Product $product)
+    {  
+        $product->restore();        
+        return $this->index();
     }
 }

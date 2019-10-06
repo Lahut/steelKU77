@@ -47,6 +47,9 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ action('ProductController@index') }}">สินค้าทั้งหมด</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ action('ProductController@deleted') }}">สินค้าที่ถูกลบ</a>
+      </li>
      
     </ul>
     <form class="form-inline my-2 my-lg-0">

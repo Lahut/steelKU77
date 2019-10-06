@@ -32,7 +32,9 @@
         <h6>ชื่อสินค้า</h6>
         <input type="text" id="exampleForm2" class="form-control" value="{{ $product->title }}">
         <h6>รายละเอียด</h6>
-        <textarea class="form-control" id="exampleFormControlTextarea5" rows="5">{{ $product->detail }}</textarea><br><br>
+        <textarea class="form-control" id="exampleFormControlTextarea5" rows="5">{{ $product->detail }}</textarea>
+        <h6>ราคา (บาทต่อชิ้น)</h6>
+        <input type="text" id="exampleForm2" class="form-control" value="{{ $product->price }}"><br><br>
         <a href="{{ route('products.destroy', ['product' => $product->id]) }}" class="float-right btn btn-primary">ยืนยันการแก้ไข</a>
     </div>
 </div>

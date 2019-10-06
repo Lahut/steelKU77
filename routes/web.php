@@ -28,6 +28,8 @@ Route::get('/master', function () {
 Route::resource('/posts', 'PostController');
 Route::resource('/products', 'ProductController');
 Route::resource('/branches', 'BranchController');
+Route::get('/deleted', 'ProductController@deleted');
+Route::get('/deleted/{App\Product}', 'ProductController@restore');
 Route::get('/login', 'LoginController@go');
 Route::get('/home', 'IndexController@go');
 Route::get('/register', 'RegisterController@go');

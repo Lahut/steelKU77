@@ -1,15 +1,14 @@
 @extends('layouts.master')
 @section('content')
-
-<h1>รายการสินค้าทั้งหมด</h1><br><br>
-@foreach ($products->chunk(3) as $chunk)
+<h1>รายการที่ลบไปแล้ว</h1><br><br>
+    @foreach ($productsDeleted->chunk(3) as $chunk)
 <div class="">
-    <div class="row">
+    <div class="row ">
         @foreach($chunk as $product)
         <div class="col">
             <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 100%">
                 <img src="/img_product/{{$product->image}}" class="card-img-top" alt="...">
-                <div class="card-body">
+                <div class="card-body bg-secondary">
                     <?php $title = substr($product->title, 0, 20)  ?>
                     <?php $detail = substr($product->detail, 0, 65)  ?>
                     <h5 class="card-title"><?php echo $title . " ..."  ?></h5>
@@ -23,11 +22,11 @@
                             <a href="{{ route('products.show', ['product' => $product->id]) }}" class="float-right btn btn-primary">สั่งซื้อ</a><br><br>
                             <hr>
                         <p>
-                            <a href="{{ route('products.edit', ['product' => $product->id]) }}" class="float-right btn btn-primary">แก้ไข</a>      <br>                      
-                            <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST"><br>
-                                <input type="hidden" name="_method" value="DELETE">
+                            <a href="{{ action('ProductController@deleted', ['product' => $product->id]) }}" class="float-right btn btn-primary">แก้ไข</a>      <br>                      
+                            <form action="{{ action('ProductController@deleted', ['product' => $product->id]) }}" method="POST"><br>
+                                <input type="hidden" name="_method" value="GET">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">                               
-                                <input type="submit"  value="ลบ" class="float-right btn btn-primary"><br><br>
+                                <input type="submit" value="กู้คืน" class="float-right btn btn-primary"><br><br>
                             </form>
                             <hr>
                             <p>
@@ -38,7 +37,6 @@
             <br>
         </div>
         @endforeach
-        
     </div>
-    @endforeach    
+    @endforeach
     @endsection
