@@ -37,7 +37,7 @@
         <textarea name="detail" class="form-control" id="exampleFormControlTextarea5" rows="5">{{ $product->detail }}</textarea>
         <h6>ราคา (บาทต่อชิ้น)</h6>
         <input name="price" type="text" id="exampleForm2" class="form-control" value="{{ $product->price }}"><br><br>
-        <input class="form-control" type="submit" name="Submit" value="ยืนยันการแก้ไข">
+        <input class="float-right btn btn-primary" type="submit" name="Submit" value="ยืนยันการแก้ไข">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </div>
 </div>

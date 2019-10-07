@@ -41,8 +41,8 @@
                             </form>
                             <hr>
                             <p>
-                                <h6 align='right'>ลงขายเมื่อ {{$product->created_at }}</h6>
-                                <h6 align='right'>แก้ไขล่าสุด {{$product->updated_at }}</h6>
+                                <h6 class="text-black-50" align='right'>ลงขายเมื่อ {{$product->created_at }}</h6>
+                                <h6 class="text-black-50" align='right'>แก้ไขล่าสุด {{$product->updated_at }}</h6>
                 </div>
             </div>
             <br>

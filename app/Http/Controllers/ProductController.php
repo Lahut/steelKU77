@@ -115,7 +115,7 @@ class ProductController extends Controller
     }
 
     public function restore(Product $product)
-    {  
+    {
         $product->restore();        
         return $this->index();
     }
