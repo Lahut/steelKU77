@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<form name="form1" method="post" action="check_login.php">
+<form name="form1" method="post" action="#">
   <div class="card mx-auto" style="width: 50%">
     <div class="card-body mx-auto">
       ลงชื่อเข้าใช้<br>

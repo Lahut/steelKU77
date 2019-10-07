@@ -14,8 +14,16 @@
                 <div class="card-body">
                     <?php $title = substr($product->title, 0, 20)  ?>
                     <?php $detail = substr($product->detail, 0, 65)  ?>
-                    <h5 class="card-title"><?php echo $title . " ..."  ?></h5>
-                    <h6 class="card-text" maxlength="20"><?php echo $detail . " ..."  ?></h6>
+                    <h5 class="card-title"><?php
+                     echo $title;
+                     if ( $title != $product->title) {
+                        echo "...";
+                     }
+                       ?></h5>
+                    <h6 class="card-text" maxlength="20"><?php echo $detail;
+                    if ( $detail != $product->detail) {
+                        echo "...";
+                     } ?></h6>
                     <hr>
                     <p>
                         <h6 align='right'>ราคา {{$product->price}} บาท ต่อชิ้น</h6>

@@ -88,7 +88,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $title = $request->input('title');
+        $detail = $request->input('detail');
+        $price = $request->input('price');
+        $product->title = $title;
+        $product->detail = $detail;
+        $product->price = $price;
+        $product->save();
+        return $this->index();
     }
 
     /**

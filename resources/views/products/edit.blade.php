@@ -28,14 +28,19 @@
             </div>
         </div>
     </div>
+    <form name="form1" method="POST" action="{{ route('products.update', ['product' => $product->id]) }}" style="width:100%;"><br><br>
     <div class="col-7">
+    <input type="hidden" name="_method" value="PUT">
         <h6>ชื่อสินค้า</h6>
-        <input type="text" id="exampleForm2" class="form-control" value="{{ $product->title }}">
+        <input type="text" name="title" id="exampleForm2" class="form-control" value="{{ $product->title }}">
         <h6>รายละเอียด</h6>
-        <textarea class="form-control" id="exampleFormControlTextarea5" rows="5">{{ $product->detail }}</textarea>
+        <textarea name="detail" class="form-control" id="exampleFormControlTextarea5" rows="5">{{ $product->detail }}</textarea>
         <h6>ราคา (บาทต่อชิ้น)</h6>
-        <input type="text" id="exampleForm2" class="form-control" value="{{ $product->price }}"><br><br>
-        <a href="{{ route('products.destroy', ['product' => $product->id]) }}" class="float-right btn btn-primary">ยืนยันการแก้ไข</a>
+        <input name="price" type="text" id="exampleForm2" class="form-control" value="{{ $product->price }}"><br><br>
+        <input class="form-control" type="submit" name="Submit" value="ยืนยันการแก้ไข">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </div>
 </div>
+</form>
+
 @endsection
