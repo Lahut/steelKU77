@@ -35,8 +35,8 @@
                         <p>
                             <a href="{{ route('products.edit', ['product' => $product->id]) }}" class="float-right btn btn-primary">แก้ไข</a>      <br>                      
                             <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST"><br>
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">                               
+                                @csrf
+                                @method('DELETE')                          
                                 <input type="submit"  value="ลบ" class="float-right btn btn-primary"><br><br>
                             </form>
                             <hr>
@@ -52,3 +52,5 @@
     </div>
     @endforeach    
     @endsection
+
+    @section('s')

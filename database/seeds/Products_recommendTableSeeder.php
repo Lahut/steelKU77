@@ -16,5 +16,7 @@ class Products_recommendTableSeeder extends Seeder
             'title' => Str::random(10),
             'detail' => Str::random(10),
         ]);
+
+        
     }
 }

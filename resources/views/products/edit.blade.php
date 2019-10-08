@@ -1,6 +1,15 @@
 @extends('layouts.master')
 @section('content')
 <h2>แก้ไขสินค้า</h2>
+@if ($errors->any())
+    <div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    </div>
+    @endif
 <div class="row">
     <div class="col-5">
         <style>
@@ -30,15 +39,16 @@
     </div>
     <form name="form1" method="POST" action="{{ route('products.update', ['product' => $product->id]) }}" style="width:100%;"><br><br>
     <div class="col-7">
-    <input type="hidden" name="_method" value="PUT">
+    @csrf
+    @method('PUT')
         <h6>ชื่อสินค้า</h6>
-        <input type="text" name="title" id="exampleForm2" class="form-control" value="{{ $product->title }}">
+        <input type="text" name="title" id="exampleForm2" class="form-control" value="{{ old('title', $product->title) }}">
         <h6>รายละเอียด</h6>
-        <textarea name="detail" class="form-control" id="exampleFormControlTextarea5" rows="5">{{ $product->detail }}</textarea>
+        <textarea name="detail" class="form-control" id="exampleFormControlTextarea5" rows="5">{{ old('detail', $product->detail) }}</textarea>
         <h6>ราคา (บาทต่อชิ้น)</h6>
-        <input name="price" type="text" id="exampleForm2" class="form-control" value="{{ $product->price }}"><br><br>
-        <input class="float-right btn btn-primary" type="submit" name="Submit" value="ยืนยันการแก้ไข">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input name="price" type="text" id="exampleForm2" class="form-control" value="{{ old('price', $product->price) }}"><br><br>
+        <button class="float-right btn btn-primary" type="submit" name="Submit" value="">ยืนยันการแก้ไข</button>
+        
     </div>
 </div>
 </form>

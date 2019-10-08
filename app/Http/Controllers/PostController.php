@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -38,6 +38,16 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title' => ['required' , 'min:5', 'max:255'],
+            'detail' => ['required', 'max:500']
+        ]);
+        $post = new Post;
+        $post->title = $validatedData['title'];
+        $post->detail = $validatedData['detail'];
+        $post->save();
+
+        return redirect()->route('posts.show', ['post' => $post]);
     }
 
     /**

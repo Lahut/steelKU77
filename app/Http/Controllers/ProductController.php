@@ -88,14 +88,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $title = $request->input('title');
-        $detail = $request->input('detail');
-        $price = $request->input('price');
+        $validatedData = $request->validate([
+            'title' => ['required' , 'min:5', 'max:255'],
+            'detail' => ['required', 'max:500'],
+            'price' => ['required']
+        ]);
+
+        $title = $validatedData['title'];
+        $detail = $validatedData['detail'];
+        $price = $validatedData['price'];
         $product->title = $title;
         $product->detail = $detail;
         $product->price = $price;
         $product->save();
-        return $this->index();
+        return redirect()->route('products.show', ['product' => $product->id]);
     }
 
     /**
@@ -106,12 +112,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {        
-        if ($product->deleted_at == null) {
-            $product->delete();
-        } else {
-            $product->restore();
-        }
-        return $this->index();
+        
+        $product->delete();
+        $products = Product::get();
+        return redirect()->route('products.index' , ['products' => $products]);
     }
 
     public function restore(Product $product)
