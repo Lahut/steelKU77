@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\CategoryController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,11 +25,12 @@ Route::get('/about-us', function () {
 Route::get('/master', function () {
     // Closure ฟังก์ชันไม่มีชื่อ
     return view('layouts.master');
-}); 
+});
 
 Route::resource('/posts', 'PostController');
 Route::resource('/products', 'ProductController');
 Route::resource('/branches', 'BranchController');
+Route::resource('/vategories', 'CategoryController');
 Route::get('/deleted', 'ProductController@deleted');
 Route::get('/deleted/{App\Product}', 'ProductController@restore');
 Route::get('/login', 'LoginController@go');

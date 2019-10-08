@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Branch;
+use App\Category;
 use Illuminate\Http\Request;
 
-class BranchController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $branches = Branch::get();
-        // dd($posts); //dump and die
-        return view('branches.index', ['branches' => $branches]);
+        $categories = Category::active->get();
+        return view('categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -43,21 +42,24 @@ class BranchController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Branch  $branch
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Branch $branch)
+    public function show(Category $category)
     {
-        return view('branches.show', ['branch' => $branch]);
-    }
+        if (!$category->isActive()) {
+            return view('categories.show', ['category' => $category]);
 
+        }
+        return view('categories.show', ['category' => $category]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Branch  $branch
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Branch $branch)
+    public function edit(Category $category)
     {
         //
     }
@@ -66,10 +68,10 @@ class BranchController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Branch  $branch
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -77,10 +79,10 @@ class BranchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Branch  $branch
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Branch $branch)
+    public function destroy(Category $category)
     {
         //
     }
