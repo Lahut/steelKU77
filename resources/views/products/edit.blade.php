@@ -47,7 +47,7 @@
         <textarea name="detail" class="form-control" id="exampleFormControlTextarea5" rows="5">{{ old('detail', $product->detail) }}</textarea>
         <h6>ราคา (บาทต่อชิ้น)</h6>
         <input name="price" type="text" id="exampleForm2" class="form-control" value="{{ old('price', $product->price) }}"><br><br>
-        <button class="float-right btn btn-primary" type="submit" name="Submit" value="">ยืนยันการแก้ไข</button>
+        <button class="float-right btn btn-primary" type="submit" name="Submit" value="" onclick="return confirm('ยืนยันการแก้ไขสินค้า')">ยืนยันการแก้ไข</button>
         
     </div>
 </div>

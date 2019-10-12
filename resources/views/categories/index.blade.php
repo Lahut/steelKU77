@@ -1,15 +1,12 @@
 @extends('layouts.master')
 @section('content')
-<h1>Category: {{ $category->name }}</h1>
-<p>{{ $category->posts->count() }} post</p>
-    @foreach ($category as $post)
-    <div>
-<a href="{{ route('posts.show', ['post' => $post->id]) }}">
-    {{ $post->title }}
-</a>
-
-    </div>
-
-    @endforeach
+<h6>Category: {{ $categories }}</h6>
+<p>{{ $categories->count() }} post</p>
+@foreach ($categories as $post)
+<div>
+    <a href="{{ route('posts.show', ['post' => $post->id]) }}">
+        {{ $post->name }}
+    </a>
+</div>
 @endforeach
 @endsection

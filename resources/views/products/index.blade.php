@@ -37,7 +37,7 @@
                             <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST"><br>
                                 @csrf
                                 @method('DELETE')                          
-                                <input type="submit"  value="ลบ" class="float-right btn btn-primary"><br><br>
+                                <input type="submit"  value="ลบ" onclick="return confirm('ยืนยันการลบสินค้า')"class="float-right btn btn-primary"><br><br>
                             </form>
                             <hr>
                             <p>

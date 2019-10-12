@@ -48,6 +48,9 @@
         <a class="nav-link" href="{{ action('ProductController@index') }}">สินค้าทั้งหมด</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ action('ProductController@create') }}">เพิ่มสินค้า</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ action('ProductController@deleted') }}">สินค้าที่ถูกลบ</a>
       </li>
      

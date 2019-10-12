@@ -37,7 +37,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -48,7 +48,54 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => ['required' , 'min:5', 'max:255'],
+            'detail' => ['required', 'max:500'],
+            'price' => ['required', 'numeric']
+        ]);
+        if ($request->hasFile('img') ) {
+            $fileName = $_FILES['img']['name'];
+            $fileTmpName  = $_FILES['img']['tmp_name'];
+            // echo $fileName;
+            $fileError = $_FILES['img']['error'];
+            $fileSize = $_FILES['img']['size'];
+            $fileEX =   explode('.', $fileName);
+            $fileAE = strtolower(end($fileEX));
+            $allowed = array('jpg', 'jpeg', 'png', 'pdf', 'gif');
+            //    echo $fileError;
+            if (in_array($fileAE, $allowed)) {
+                if ($fileError === 0) {
+                    if ($fileSize < 10000000) {
+                    $fileNameNew = uniqid('', true) . "." . $fileAE;
+                    $fileDestinstion = 'img_product/' . $fileNameNew;
+                    move_uploaded_file($fileTmpName, $fileDestinstion);
+                    $img = $fileNameNew;
+                } else {
+                    return "<script>
+        alert('ไฟล์รูป ใหญ่เกินไป');
+        window.history.back();
+    </script>";
+                }
+                } else {
+                    return "<script>
+            alert('ไฟล์ ERROR');
+            window.history.back();
+        </script>";
+                }
+            } else {
+                $img = 'image.png';
+            }
+        } else {
+            $img = 'image.png';
+        }
+        $product = new Product();
+        $product->image = $img;
+        $product->title = $validatedData['title'];
+        $product->detail = $validatedData['detail'];
+        $product->price = $validatedData['price'];
+        $product->save();
+
+        return redirect()->route('products.show', ['product' => $product]);
     }
 
     /**
