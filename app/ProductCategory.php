@@ -2,19 +2,18 @@
 
 namespace App;
 
-use App\Post;
+use App\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class ProductCategory extends Model
 {
     use SoftDeletes;
 
-    // 1 Category has many Post(s)
-    public function posts() {
-        return $this->hasMany(Post::class);
+    public function products() {
+        return $this->hasMany(Product::class);
     }
-    // ตรวจสอบว่า field status เป็น ACTIVE หรือไม่
+
     public function isActive() {
         return $this->status === 'ACTIVE';
     }

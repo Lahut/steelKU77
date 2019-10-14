@@ -30,7 +30,7 @@ Route::get('/master', function () {
 Route::resource('/posts', 'PostController');
 Route::resource('/products', 'ProductController');
 Route::resource('/branches', 'BranchController');
-Route::resource('/categories', 'CategoryController');
+Route::resource('/categories', 'ProductCategoryController');
 Route::get('/deleted', 'ProductController@deleted');
 Route::get('/deleted/{App\Product}', 'ProductController@restore');
 Route::get('/login', 'LoginController@go');

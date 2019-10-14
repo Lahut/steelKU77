@@ -4,6 +4,7 @@
 <p>{{ date('j/M/Y H:i:s') }}</p> 
 
 @foreach ($posts as $post) 
+    {{ $post->category->status }}
     <div class="card">
     <div class="card-body">
     {{ $post->id }}

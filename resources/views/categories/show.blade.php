@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
 <h1>All Categories</h1>
-@foreach ( $Categories as $ )
+@foreach ( $category as $category) 
+{{ $category->name }}}
 
 @endforeach
 @endsection
