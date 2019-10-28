@@ -36,10 +36,20 @@
     </div>
 
     <div class="col-7">
-
+<br>
         <h6>ชื่อสินค้า</h6>
         <input type="text" name="title" id="exampleForm2" class="@error('title') is-invalid @enderror form-control" value="{{ old('title') }}">
         @error('title')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <h6>ประเภทสินค้า</h6>
+        <select class="@error('category') is-invalid @enderror browser-default custom-select" name="category">
+            <option value="" selected> - ประเภทสินค้า - </option>
+            @foreach (App\ProductCategory::all() as $item)
+        <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @endforeach
+          </select>
+          @error('category')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <h6>รายละเอียด</h6>

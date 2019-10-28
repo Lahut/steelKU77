@@ -10,10 +10,35 @@
     <p>สาขาที่ {{ $branch->id }}</p>
     <h5 class="card-title">{{ $branch->title }}</h5>
     <p class="card-text">{{ $branch->detail }}</p>
-    <a href="{{ route('branches.show', ['branch' => $branch->id]) }}" class="btn btn-primary">ดูแผนที่</a>
+    </div>
+    <div class="row" style="position:relative; left:-70px; ">
+    <div class="col-1"></div>
+    <div class="col-2">
+    <a href="{{ route('branches.show', ['branch' => $branch->id]) }}" class="center btn btn-primary mx-auto">ดูข้อมูล</a>
+    </div>
 
+    
+    <div class="col-8" style="position:relative; left:80px;">
+    @can('create',App\Branch::class)
+    <a href="{{ route('branches.edit', ['branch' => $branch->id]) }}" class="float-right btn btn-primary">แก้ไข</a>
+    @endcan     
+</div>
+    <div class="col-1" style="position:relative; left:65px;">
+    @can('create',App\Branch::class)
+    <form action="{{ route('branches.destroy', ['branch' => $branch->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+           
+            <button type="submit"  onclick="return confirm('ยืนยันการลบสาขา')" class="float-left btn btn-primary">ลบ</button>
+            @endcan 
+        </form>
+
+        <br><br><br>
     </div>
+   
+</div>
     </div>
+    
 
 @endforeach
 @endsection

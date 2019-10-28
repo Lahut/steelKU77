@@ -29,4 +29,7 @@ class Post extends Model
     public function isActive(){
         return $this->category->status === 'ACTIVE';
     }
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

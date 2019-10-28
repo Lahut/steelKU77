@@ -10,8 +10,11 @@ class ProductCategory extends Model
 {
     use SoftDeletes;
 
+    public $fileable = ['name'];
+    protected $table = "product_categories";
+
     public function products() {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class,  'category_id');
     }
 
     public function isActive() {

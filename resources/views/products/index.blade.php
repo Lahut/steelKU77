@@ -1,15 +1,20 @@
 @extends('layouts.master')
 @section('content')
-
+@auth
+<h1>All Product for {{ Auth::user()->name }}</h1>
+@else
+<h1>All Product</h1>
+@endauth
 <h1>รายการสินค้าทั้งหมด</h1><br><br>
 @foreach ($products->chunk(3) as $chunk)
 <div class="">
     <div class="row">
         @foreach($chunk as $product)
         <div class="col">
-            <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500" class="mx-auto card shadow-sm p-3 mb-5 bg-white rounded" style="width: 21rem;">
-                <img src="/img_product/{{$product->image}}" class="shadow-sm p-0 card-img-top" alt="..." width="200" height="200">
-                <div class="card-body" >
+            <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500" class="mx-auto" style=" width:290px;">
+            <p>ประเภทสินค้า {{ $product->category['name'] }}</p>
+                <img src="/img_product/{{$product->image}}" class="shadow-sm p-0" alt="..." width="100%" height="200"><br><br>
+                <div class="">
                     <?php $title = substr($product->title, 0, 20)  ?>
                     <?php $detail = substr($product->detail, 0, 65)  ?>
                     <h5 class="card-title"><?php
@@ -28,27 +33,26 @@
                         <h6 align='right'>ขายไปแล้ว {{$product->order_count}} ชิ้น</h6>
                         <hr>
                         <p>
+                            @auth
                             <a href="{{ route('products.show', ['product' => $product->id]) }}" class="float-right btn btn-primary">สั่งซื้อ</a><br><br>
+
+                            @else
+                            <a class="text-danger float-right" href="{{ route('login') }}">กรุณาเข้าสู่ระบบเพื่อทำการสั่งซื้อ</a><br>
+                            @endauth
                             <hr>
                             <p>
-                                <a href="{{ route('products.edit', ['product' => $product->id]) }}" class="float-right btn btn-primary">แก้ไข</a> <br>
-                                <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST"><br>
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" value="ลบ" onclick="return confirm('ยืนยันการลบสินค้า')" class="float-right btn btn-primary"><br><br>
-                                </form>
-                                <hr>
-                                <p>
-                                    <h6 class="text-black-50" align='right'>ลงขายเมื่อ {{$product->created_at }}</h6>
-                                    <h6 class="text-black-50" align='right'>แก้ไขล่าสุด {{$product->updated_at }}</h6>
+                                <h6 class="text-black-50" align='right'>ลงขายเมื่อ {{$product->created_at }}</h6>
+                                <h6 class="text-black-50" align='right'>แก้ไขล่าสุด {{$product->updated_at }}</h6>
                 </div>
             </div>
-            
         </div>
         @endforeach
 
     </div>
+    </div>
+    <br><br>
     @endforeach
+
     @endsection
 
     @section('s')

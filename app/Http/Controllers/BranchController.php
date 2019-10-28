@@ -38,6 +38,7 @@ class BranchController extends Controller
     public function store(Request $request)
     {
         //
+        // $this->authorize('create',Branch::class);
     }
 
     /**
@@ -60,6 +61,8 @@ class BranchController extends Controller
     public function edit(Branch $branch)
     {
         //
+        $this->authorize('update', $branch);
+        return view('branches.edit',['branch' => $branch]);
     }
 
     /**
@@ -72,6 +75,28 @@ class BranchController extends Controller
     public function update(Request $request, Branch $branch)
     {
         //
+        $validatedData = $request->validate([
+            'title' => ['required' , 'min:5', 'max:255'],
+            'detail' => ['required', 'max:500']
+        ]);
+
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        if ($request->image == NULL) {
+            $imageName = $branch->imagemap;
+        } else {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('img_product'), $imageName);
+        }
+
+        $title = $validatedData['title'];
+        $detail = $validatedData['detail'];
+        $branch->title = $title;
+        $branch->imagemap = $imageName;
+        $branch->detail = $detail;
+        $branch->save();
+        return redirect()->route('branches.show', ['branch' => $branch->id]);
     }
 
     /**
@@ -83,5 +108,9 @@ class BranchController extends Controller
     public function destroy(Branch $branch)
     {
         //
+        $branch->delete();
+        $branch = Branch::get();
+        //$productsDeleted = Product::onlyTrashed()->get();
+        return redirect()->route('branches.index' , ['brnaches' => $branch]);  
     }
 }

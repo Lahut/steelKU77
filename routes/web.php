@@ -28,15 +28,30 @@ Route::get('/master', function () {
 });
 
 Route::resource('/posts', 'PostController');
+Route::resource('/orders', 'OrderController');
 Route::resource('/products', 'ProductController');
 Route::resource('/branches', 'BranchController');
 Route::resource('/categories', 'ProductCategoryController');
 Route::get('/deleted', 'ProductController@deleted');
+Route::get('/manage', 'ProductController@manage');
 Route::get('/deleted/{App\Product}', 'ProductController@restore');
 Route::get('/login', 'LoginController@go');
 Route::get('/home', 'IndexController@go');
 Route::get('/register', 'RegisterController@go');
 Route::get('/informations', 'InformationsController@go');
 Route::get('/contact', 'ContactController@go');
+
+Route::get('/profile', 'UsersController@profile')->name('profile');
 //->where('id', '[0-9]+');
 //->name('posts.show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::view('vue', 'vue');
+
+Route::get('test', function(){
+    return App\ProductCategory::with('products')
+    ->where('id', 3)
+    ->get();
+});

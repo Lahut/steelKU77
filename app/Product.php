@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Order;
 use App\ProductCategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,7 +11,10 @@ class Product extends Model
 {
     use SoftDeletes;
 
-    public function productCategories() {
+    public function orders() {
+            return $this->hasMany(Order::class);
+    }
+    public function category() {
         //belongsto เป็นของ
             return $this->belongsTo(ProductCategory::class);
     }

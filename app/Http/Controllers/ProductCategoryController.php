@@ -14,7 +14,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $product_categories = ProductCategory::get();
+        $product_categories = ProductCategory::with('products')->get();
         return view('categories.index', ['product_categories' => $product_categories]);
     }
 
@@ -25,7 +25,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', 'max:255']
+        ]);
+        $category = new ProductCategory();
+        $category->name = $validatedData['name'];
+        $category->save();
+
+        return redirect('/categories/create');
     }
 
     /**
@@ -45,13 +52,13 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductCategory $productCategory)
+    public function show(ProductCategory $category)
     {
         /*if (!$productCategory->isActive()) {
             return redirect()->route('categories.index');
 
         }*/
-        return view('categories.show', ['category' => $productCategory]);
+        return view('categories.show', ['productCategory' => $category]);
     }
 
     /**

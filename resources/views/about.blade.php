@@ -2,6 +2,9 @@
 @section('content')
 
     <h1>About ME</h1>
-    <p>Numin</p>
-    
+    <p>Lahut</p>
+    <div id = "app">
+        <post></post>
+    </div>
+
 @endsection
