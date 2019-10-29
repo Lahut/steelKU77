@@ -41,6 +41,10 @@ Route::get('/register', 'RegisterController@go');
 Route::get('/informations', 'InformationsController@go');
 Route::get('/contact', 'ContactController@go');
 
+Route::get('/test/api', function() {
+    return view('test-api');
+});
+
 Route::get('/profile', 'UsersController@profile')->name('profile');
 //->where('id', '[0-9]+');
 //->name('posts.show');
