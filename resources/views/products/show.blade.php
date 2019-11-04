@@ -1,8 +1,9 @@
 @extends('layouts.master')
 @section('content')
 <h1>{{ $product->title }}</h1>
-<form name="form1" method="POST" action="{{ route('orders.store') }}" style="width:100%;" enctype="multipart/form-data">
+<form name="form1" method="POST" action="{{ action('OrderController@confirm') }}" style="width:100%;" enctype="multipart/form-data">
     @csrf
+    @method('GET')
     <div class="row">
 
     <div class="col-5">

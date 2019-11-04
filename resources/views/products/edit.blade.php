@@ -35,15 +35,25 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-    
+
     <form name="form1" method="POST" action="{{ route('products.update', ['product' => $product->id]) }}" style="width:100%;"><br><br>
         <div class="col-7">
-           
+
             <h6>ชื่อสินค้า</h6>
             <input type="text" name="title" id="exampleForm2" class="@error('title') is-invalid @enderror form-control" value="{{ old('title', $product->title) }}">
             @error('title')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            <h6>ประเภทสินค้า</h6>
+        <select class="@error('category') is-invalid @enderror browser-default custom-select" name="category">
+        <option value="{{ $product->category_id }}" selected>{{ old('title', $product->category['name']) }}</option>
+            @foreach (App\ProductCategory::where('name', '!=', $product->category['name'])->get() as $item)
+        <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @endforeach
+          </select>
+          @error('category')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
             <h6>รายละเอียด</h6>
             <textarea name="detail" class="@error('detail') is-invalid @enderror form-control" id="exampleFormControlTextarea5" rows="5">{{ old('detail', $product->detail) }}</textarea>
             @error('detail')

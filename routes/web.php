@@ -32,6 +32,7 @@ Route::resource('/orders', 'OrderController');
 Route::resource('/products', 'ProductController');
 Route::resource('/branches', 'BranchController');
 Route::resource('/categories', 'ProductCategoryController');
+Route::resource('/users', 'UsersController');
 Route::get('/deleted', 'ProductController@deleted');
 Route::get('/manage', 'ProductController@manage');
 Route::get('/deleted/{App\Product}', 'ProductController@restore');
@@ -40,11 +41,12 @@ Route::get('/home', 'IndexController@go');
 Route::get('/register', 'RegisterController@go');
 Route::get('/informations', 'InformationsController@go');
 Route::get('/contact', 'ContactController@go');
+Route::get('/confirm', 'OrderController@confirm');
 
 Route::get('/test/api', function() {
     return view('test-api');
 });
-
+Route::get('/add_creator', 'UsersController@addCreator');
 Route::get('/profile', 'UsersController@profile')->name('profile');
 //->where('id', '[0-9]+');
 //->name('posts.show');

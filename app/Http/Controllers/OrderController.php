@@ -20,10 +20,10 @@ class OrderController extends Controller
     public function index()
     {
         if (Auth::user()->role === "ADMIN" || Auth::user()->role === "CREATOR") {
-            $orders = Order::orderBy('created_at', 'desc')->get();
+            $orders = Order::orderBy('created_at', 'desc')->paginate(5);
         }
         else {
-            $orders = Order::where('user_id', Auth::user()->id)->get();
+            $orders = Order::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
         }
         return view('orders.index', ['orders' => $orders]);
     }
@@ -35,7 +35,27 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+
+    }
+
+    public function confirm(Request $request)
+    {
+        $validatedData = $request->validate([
+            'amount' => ['required', 'numeric'],
+            'address' => ['required', 'max:255'],
+            'detail' => ['required', 'max:255']
+        ]);
+
+
+        $order = new Order();
+        $order->product_id = $request->product_id;
+        $order->user_id = Auth::id();
+        $order->amount = $validatedData['amount'];
+        $order->address = $validatedData['address'];
+        $order->detail = $validatedData['detail'];
+        //$order->save();
+
+        return view('products.confirm', ['order' => $order]);
     }
 
     /**

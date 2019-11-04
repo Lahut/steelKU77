@@ -26,7 +26,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        return view('branches.create');
     }
 
     /**
@@ -37,8 +37,21 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $this->authorize('create',Branch::class);
+        $validatedData = $request->validate([
+            'title' => ['required' , 'min:5', 'max:255'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'detail' => ['required', 'max:500']
+        ]);
+
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('img_branches'), $imageName);
+        $branch = new Branch();
+        $branch->title = $validatedData['title'];
+        $branch->imagemap = $imageName;
+        $branch->detail = $validatedData['detail'];
+        $branch->save();
+
+        return redirect()->route('branches.show', ['branch' => $branch]);
     }
 
     /**
@@ -87,7 +100,7 @@ class BranchController extends Controller
             $imageName = $branch->imagemap;
         } else {
             $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('img_product'), $imageName);
+            $request->image->move(public_path('img_branches'), $imageName);
         }
 
         $title = $validatedData['title'];
@@ -111,6 +124,6 @@ class BranchController extends Controller
         $branch->delete();
         $branch = Branch::get();
         //$productsDeleted = Product::onlyTrashed()->get();
-        return redirect()->route('branches.index' , ['brnaches' => $branch]);  
+        return redirect()->route('branches.index' , ['brnaches' => $branch]);
     }
 }

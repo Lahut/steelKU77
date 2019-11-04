@@ -22,7 +22,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::orderBy('created_at', 'desc')->get();
+        $products = Product::orderBy('created_at', 'desc')->paginate(9);
        // dd($posts); //dump and die
         return view('products.index', ['products' => $products]);
     }
@@ -30,8 +30,8 @@ class ProductController extends Controller
     public function manage()
     {
         //$this->authorize('create');
-        $products = Product::get();
-        $productsDeleted = Product::onlyTrashed()->get();
+        $products = Product::orderBy('created_at', 'desc')->paginate(9);
+        $productsDeleted = Product::onlyTrashed()->paginate(9);
        // dd($posts); //dump and die
         return view('products.manage', ['products' => $products,
         'productsDeleted' => $productsDeleted]);
@@ -40,7 +40,7 @@ class ProductController extends Controller
     public function deleted()
     {
         $products = Product::get();
-        $productsDeleted = Product::onlyTrashed()->get();
+        $productsDeleted = Product::onlyTrashed()->orderBy('created_at', 'desc')->get();
        // dd($posts); //dump and die
         return view('products.deleted', ['products' => $products,
         'productsDeleted' => $productsDeleted]);
@@ -124,6 +124,7 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'title' => ['required' , 'min:5', 'max:255'],
+            'category' => 'required',
             'detail' => ['required', 'max:500'],
             'price' => ['required', 'numeric']
         ]);
@@ -139,9 +140,11 @@ class ProductController extends Controller
         }
 
         $title = $validatedData['title'];
+        $category = $validatedData['category'];
         $detail = $validatedData['detail'];
         $price = $validatedData['price'];
         $product->title = $title;
+        $product->category_id = $category;
         $product->image = $imageName;
         $product->detail = $detail;
         $product->price = $price;

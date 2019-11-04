@@ -14,7 +14,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $product_categories = ProductCategory::with('products')->get();
+        $product_categories = ProductCategory::with('products')->orderBy('created_at', 'desc')->get();
         return view('categories.index', ['product_categories' => $product_categories]);
     }
 

@@ -18,6 +18,7 @@
     </div>
     <div class="col-7">
         <p>{{$product->title}}</p>
+        <p>{{ $product->category['name'] }}</p>
     </div>
     <div class="col-0.5">
         <a href="{{ route('products.show', ['product' => $product->id]) }}" class="float-right btn btn-primary">หน้าสั่งซื้อ</a>
@@ -37,5 +38,6 @@
 <hr>
     <p>
 @endforeach
+<div class="">{{ $products->links() }}</div>
 <a class="nav-link float-right" href="{{ action('ProductController@deleted') }}">สินค้าที่ถูกลบ</a>
 @endsection

@@ -11,7 +11,7 @@
             footer,
             header,
             hgroup,
-            menu,   
+            menu,
             nav,
             section {
                 display: block;
@@ -35,10 +35,10 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-    
+
     <form name="form1" method="POST" action="{{ route('branches.update', ['branch' => $branch->id]) }}" style="width:100%;"><br><br>
         <div class="col-7">
-           
+
             <h6>ชื่อสาขา</h6>
             <input type="text" name="title" id="exampleForm2" class="@error('title') is-invalid @enderror form-control" value="{{ old('title', $branch->title) }}">
             @error('title')

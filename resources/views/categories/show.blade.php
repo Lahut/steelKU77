@@ -6,12 +6,12 @@
 $products = $productCategory->products
 ?>
 
-@foreach ($products->chunk(3) as $chunk)
+@foreach ($products->chunk(3)->reverse() as $chunk)
 <div class="">
     <div class="row">
         @foreach($chunk as $product)
         <div class="col">
-            <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500" class="mx-auto" style=" width:290px;">
+            <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500" class="bg-light mx-auto" style="margin:20px; padding:20px; border:20px; width:335px;">
             <p>{{ $product->category['name'] }}</p>
                 <img src="/img_product/{{$product->image}}" class="shadow-sm p-0" alt="..." width="100%" height="200"><br><br>
                 <div class="">

@@ -46,39 +46,50 @@
   </div>
 </div>
 
+<h3>สินค้าขายดี</h3>
 
+        @foreach (App\Product::orderBy('order_count', 'desc')->take(3)->get()->chunk(3) as $chunk)
+        <div class="row">
+        @foreach($chunk as $product)
+        <div class="col">
+        <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500" class="bg-light mx-auto" style="margin:20px; padding:20px; border:20px; width:335px;">
+            <p>ประเภทสินค้า {{ $product->category['name'] }}</p>
+                <img src="/img_product/{{$product->image}}" class="shadow-sm p-0" alt="..." width="100%" height="200"><br><br>
 
-<h3>สินค้าแนะนำ</h3>
-<div class="card mb-3 img" data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="500"style="max-width: 100%;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="imghome/different-metal-products-stainless-steel-profiles-PD9SKW3-1024x768.jpg" class="card-img" alt="...">
+                    <?php $title = substr($product->title, 0, 20)  ?>
+                    <?php $detail = substr($product->detail, 0, 65)  ?>
+                    <h5 class="card-title"><?php
+                                            echo $title;
+                                            if ($title != $product->title) {
+                                                echo "...";
+                                            }
+                                            ?></h5>
+                    <h6 class="card-text" maxlength="20"><?php echo $detail;
+                                                            if ($detail != $product->detail) {
+                                                                echo "...";
+                                                            } ?></h6>
+                    <hr>
+                    <p>
+                        <h6 align='right'>ราคา {{$product->price}} บาท ต่อชิ้น</h6>
+                        <h6 align='right'>ขายไปแล้ว {{$product->order_count}} ชิ้น</h6>
+                        <hr>
+                        <p>
+                            @auth
+                            <a href="{{ route('products.show', ['product' => $product->id]) }}" class="float-right btn btn-primary">สั่งซื้อ</a><br><br>
+
+                            @else
+                            <a class="text-danger float-right" href="{{ route('login') }}">กรุณาเข้าสู่ระบบเพื่อทำการสั่งซื้อ</a><br>
+                            @endauth
+                            <hr>
+                            <p>
+                                <h6 class="text-black-50" align='right'>ลงขายเมื่อ {{$product->created_at }}</h6>
+                                <h6 class="text-black-50" align='right'>แก้ไขล่าสุด {{$product->updated_at }}</h6>
+                            </div>
+                        </div>
+        @endforeach
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">จำหน่ายเหล็กรุปพรรณ เกรด A และ B ทุกชนิด</h5>
-        <p class="card-text">ลักษณะเหล็กเกรด  A    เป็นเหล็กใหม่ จากโรงงานผลิต  เรียบ ตรง ไม่มีรอยต่อ
-ลักษณะเหล็กเกรด B     เป็นเหล็กที่มาจากโรงงานผลิต แต่ไม่สมบูรณ์ เช่นความยามไม่ถึง 6 ม.  เหล็กมีรอยต่อ ตำหนิ  แต่ไม่ใช่เหล็กเก่า</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="card mb-3 img" data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="500" style="max-width: 100%;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="imghome/different-metal-products-stainless-steel-profiles-PD9SKW3-1024x768.jpg" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">จำหน่ายเหล็กรุปพรรณ เกรด A และ B ทุกชนิด</h5>
-        <p class="card-text">ลักษณะเหล็กเกรด  A    เป็นเหล็กใหม่ จากโรงงานผลิต  เรียบ ตรง ไม่มีรอยต่อ
-ลักษณะเหล็กเกรด B     เป็นเหล็กที่มาจากโรงงานผลิต แต่ไม่สมบูรณ์ เช่นความยามไม่ถึง 6 ม.  เหล็กมีรอยต่อ ตำหนิ  แต่ไม่ใช่เหล็กเก่า</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    @endforeach
+
       </div>
     </div>
   </div>
