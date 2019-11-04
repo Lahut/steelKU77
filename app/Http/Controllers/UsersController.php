@@ -34,6 +34,7 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $this->authorize('create', User::class);
         $users = User::get();
        // dd($posts); //dump and die
         return view('users.index', ['users' => $users]);
