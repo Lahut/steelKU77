@@ -1,7 +1,9 @@
 @extends('layouts.master')
 @section('content')
 <h1></h1>
+@can('create', App\Branch::class)
 <a class="nav-link float-right" href="{{ action('BranchController@create') }}">เพิ่มสาขา</a><br><br>
+@endcan
 @foreach ($branches as $branch)
     <div class="card fade-up" data-aos="fade-down"
      data-aos-easing="linear"
