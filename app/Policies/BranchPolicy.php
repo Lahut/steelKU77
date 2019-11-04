@@ -46,7 +46,8 @@ class BranchPolicy
     public function create(User $user)
     {
         //
-        return $user->isAdmin();
+        return $user->isAdmin() or
+        $user->isCreator();
     }
 
     /**
