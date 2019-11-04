@@ -64,6 +64,12 @@
         <a class="nav-link" href="{{ action('OrderController@index') }}">คำสั่งซื้อ</a>
       </li>
       @endauth
+      @can('create', App\User::class)
+      <li class="nav-item">
+       <a class="nav-link" href="{{ action('UsersController@index') }}">
+        จัดการสมาชิก
+      </a></li>
+      @endcan
     </ul>
    <ul class="nav navbar-nav navbar-right">
     @guest

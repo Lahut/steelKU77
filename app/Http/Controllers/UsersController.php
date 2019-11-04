@@ -34,7 +34,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-
+        $users = User::get();
+       // dd($posts); //dump and die
+        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -123,6 +125,10 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        //$this->authorize('delete', $product);
+        $user->delete();
+        //$products = Product::get();
+        //$productsDeleted = Product::onlyTrashed()->get();
+        return redirect('/users');
     }
 }

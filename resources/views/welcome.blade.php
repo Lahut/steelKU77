@@ -45,7 +45,28 @@
     </a>
   </div>
 </div>
+<h3>สินค้าใหม่</h3>
+@foreach (App\Product::orderBy('created_at', 'desc')->take(3)->get() as $product)
+<div class="row bg-light" style="margin:5px;">
+        <div class="col" >
+            <img style="margin:10px;"src="/img_product/{{$product->image}}" class="shadow-sm p-0" alt="..." width="110" height="75">
+        </div>
+        <div style="margin:10px;"class="col-7">
+            <p>{{$product->title}}</p>
+            <p>{{ $product->category['name'] }}</p>
+        </div>
+        <div style="margin:10px;"class="col-2">
+                @auth
+                <a href="{{ route('products.show', ['product' => $product->id]) }}" class="float-right btn btn-primary">สั่งซื้อ</a><br><br>
 
+                @else
+                <a class="text-danger float-right" href="{{ route('login') }}">กรุณาเข้าสู่ระบบเพื่อทำการสั่งซื้อ</a><br>
+                @endauth
+        </div>
+
+    </div>
+    <br>
+@endforeach
 <h3>สินค้าขายดี</h3>
 
         @foreach (App\Product::orderBy('order_count', 'desc')->take(3)->get()->chunk(3) as $chunk)
