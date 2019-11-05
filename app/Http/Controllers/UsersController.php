@@ -107,7 +107,7 @@ class UsersController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'email'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
 
         $name = $validatedData['name'];
@@ -128,6 +128,9 @@ class UsersController extends Controller
     {
         //$this->authorize('delete', $product);
         $user->delete();
+        foreach($user->orders as $order) {
+            $order->delete();
+        }
         //$products = Product::get();
         //$productsDeleted = Product::onlyTrashed()->get();
         return redirect('/users');

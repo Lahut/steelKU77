@@ -162,6 +162,9 @@ class ProductController extends Controller
     {
         $this->authorize('delete', $product);
         $product->delete();
+        foreach($product->orders as $order) {
+            $order->delete();
+        }
         $products = Product::get();
         //$productsDeleted = Product::onlyTrashed()->get();
         return redirect('/manage');

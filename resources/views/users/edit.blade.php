@@ -17,7 +17,7 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <br><br>
-            <button class="float-right btn btn-primary" type="submit" name="Submit" value="" onclick="return confirm('ยืนยันการแก้ไขสินค้า')">ยืนยันการแก้ไข</button>
+            <button class="float-right btn btn-primary" type="submit" name="Submit" value="" onclick="return confirm('ยืนยันการแก้ไข')">ยืนยันการแก้ไข</button>
         </form>
 
 @endsection

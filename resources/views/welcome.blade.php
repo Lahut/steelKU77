@@ -15,22 +15,22 @@
       <div class="carousel-item active">
         <img src="imghome/banner1.jpg" class="d-block w-100" alt="..." width="500" height="400">
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h5>เหล็กดีคุณภาพ</h5>
+          <p>เหล็กดีมากเลยนะนี่เหล็กดีสวยงาม</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="imghome/images (3).jpg" class="d-block w-100" alt="..." width="500" height="400">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h5>ต้องราหูดเหล็กเส้น</h5>
+          <p>ราหูดเหล็กเส้นส่งตรงถึงไซด์ก่อสร้าง</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="imghome/images (2).jpg" class="d-block w-100" alt="..." width="500" height="400">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          <h5>คุณภาพชั้นดีสุดๆ</h5>
+          <p>ติดต่อ 09999999</p>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
 </div>
 <h3>สินค้าใหม่</h3>
 @foreach (App\Product::orderBy('created_at', 'desc')->take(3)->get() as $product)
-<div class="row bg-light" style="margin:5px;">
+<div data-aos="fade-down" data-aos-easing="linear" class="row bg-light" style="margin:5px;">
         <div class="col" >
             <img style="margin:10px;"src="/img_product/{{$product->image}}" class="shadow-sm p-0" alt="..." width="110" height="75">
         </div>
