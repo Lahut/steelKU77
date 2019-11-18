@@ -23,6 +23,9 @@ __จัดทำโดย__
  16. พิมพ์คำสั่ง php artisan migrate:refresh --seed
  17. พิมพ์คำสั่ง php artisan serve
  
+## schema
+ ![schema](schema.png?raw=true)
+ 
 ## การเข้าใช้ระบบ
 
 ###  ADMIN 
